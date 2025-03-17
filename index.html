@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>autoSPB</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="back-to-top" onclick="smoothScrollToTop()">↑</div>
+    <!-- Шапка -->
+    <header>
+        <div class="logo">autoSPB</div>
+        <a href="#section-1">Условия</a>
+        <a href="#section-2">Отзывы</a>
+        <a href="#section-3">Карта</a>
+        <a href="tel:+79001234567">+7 (926) 407-68-28</a>
+    </header>
+
+    <!-- Блок с картинкой и текстом -->
+    <section class="image-text-block">
+        <div class="image-body">
+            <img src="img/logo2.jpg" alt="Картинка">
+        </div>
+        <div class="text">
+            <h1>АРЕНДА АВТОМОБИЛЕЙ В САНКТ-ПЕТЕРБУРГЕ</h1>
+            <p8>Широкий ассортимент автомобилей
+                эконом, комфорт и премиум класса</p8>
+        </div>    
+            <div class="notes">
+                <div class="note">не сдаём в такси</div>
+                <div class="note">с водителем и без</div>
+                <div class="note">возможность выезда за город</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Блок с карточками -->
+    <div class="product-container">
+        <div class="product-card" data-name="Товар 1" data-price="1000">
+            <img src="img/2.jpg" alt="Товар 1">
+            <h2>Товар 1</h2>
+            <p>Описание товара 1</p>
+            <p>Цена: 1000 ₽</p>
+            <button class="openModalBtn">Подробнее</button>
+        </div>
+        <div class="product-card" data-name="Товар 2" data-price="1000">
+            <img src="img/1.jpg" alt="Товар 1">
+            <h2>Товар 2</h2>
+            <p>Описание товара 2</p>
+            <p>Цена: 1000 ₽</p>
+            <button class="openModalBtn">Подробнее</button>
+        </div>
+        <div class="product-card" data-name="Товар 3" data-price="1000">
+            <img src="img/3.jpg" alt="Товар 1">
+            <h2>Товар 3</h2>
+            <p>Описание товара 3</p>
+            <p>Цена: 1000 ₽</p>
+            <button class="openModalBtn">Подробнее</button>
+        </div>
+        <div class="product-card" data-name="Товар 4" data-price="1000">
+            <img src="img/4.jpg" alt="Товар 1">
+            <h2>Товар 4</h2>
+            <p>Описание товара 4</p>
+            <p>Цена: 1000 ₽</p>
+            <button class="openModalBtn">Подробнее</button>
+        </div>
+        <div class="product-card" data-name="Товар 5" data-price="2000">
+            <img src="img/5.jpg" alt="Товар 3">
+            <h2>Товар 5</h2>
+            <p>Описание товара 5</p>
+            <p>Цена: 2000 ₽</p>
+            <button class="openModalBtn">Подробнее</button>
+        </div>
+        <div class="product-card" data-name="Товар 6" data-price="2000">
+            <img src="img/6.jpg" alt="Товар 3">
+            <h2>Товар 6</h2>
+            <p>Описание товара 6</p>
+            <p>Цена: 2000 ₽</p>
+            <button class="openModalBtn">Подробнее</button>
+        </div> 
+    </div>
+
+    <!-- Модальное окно (будет одно для всех товаров) -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Полное описание товара</h2>
+      <p id="modalDescription">Здесь будет полное описание товара, характеристики и другая информация.</p>
+    </div>
+  </div>
+    
+    <h2 id="section-1"></h2>
+      <div class="rental-steps-container">
+        <div class="step" id="step1">
+          <div class="tooltip" id="tooltip1">Вы звоните по номеру
+            +7 705 888 73 17 и оставляете заявку на сайте </div>
+          <p>ЗАЯВКА НА САЙТЕ
+        </p>
+        </div>
+        <div class="step" id="step2">
+          <div class="tooltip" id="tooltip2">Помогаем с подбором авто, обсуждаем детали поездки, согласовываем стоимость</div>
+          <p>ПОДБОР АВТОМОБИЛЯ</p>
+        </div>
+        <div class="step" id="step3">
+          <div class="tooltip" id="tooltip3">Запрашиваем документы, заключаем договор с юр. лицами и готовим транспорт</div>
+          <p>ДОГОВОР, ОПЛАТА И СТРАХОВКА</p>
+        </div>
+        <div class="step" id="step4">
+          <div class="tooltip" id="tooltip4">Подаем автомобиль с соблюдением оговоренной даты и времени</div>
+          <p>АВТОМОБИЛЬ В ВАШЕМ РАСПОРЯЖЕНИИ</p>
+        </div>
+      </div>
+
+      <h2 id="section-2"></h2>
+  <div class="reviews-container">
+    <div class="reviews-title">ОТЗЫВЫ</div>
+    <div class="reviews-list">
+      <div class="review-item">
+        <p class="review-text">"Отличный сервис, очень быстро нашли нужный автомобиль. Все понравилось!"</p>
+        <p class="review-author">— Иван П.</p>
+      </div>
+      <div class="review-item">
+        <p class="review-text">"Процесс аренды был легким и понятным. Спасибо за помощь!"</p>
+        <p class="review-author">— Мария С.</p>
+      </div>
+      <div class="review-item">
+        <p class="review-text">"Не ожидал, что всё пройдет так быстро и удобно. Рекомендую!"</p>
+        <p class="review-author">— Алексей К.</p>
+      </div>
+    </div>
+    <div class="google-reviews">
+      <p>Посмотрите другие отзывы или оставьте свой на <a href="https://yandex.by/maps/org/almak_prokat/69624163602/?ll=30.362311%2C59.924984&z=15" target="_blank" class="google-link">yandex</a>.</p>
+    </div>
+  </div>
+
+  <!-- Подвал -->
+  <footer>
+    <div class="footer-content">
+        <h5>Ваш autoSPB</h5>
+        <ul class="contact-links">
+            <li><a href="tel:+79001234567">Телефон: +7 (926) 407-68-28</a></li>
+            <li><a href="mailto:info@vashmagazin.ru">Электронная почта: info@autoSPB.ru</a></li>
+            <li><a href="https://www.example.com" target="_blank">Сайт: www.autoSPB.ru</a></li>
+        </ul>
+    </div>
+   
+    <h2 id="section-3"></h2>
+    <div class="tn-atom tn-atom__html">
+        <div style="position: relative; padding-bottom: 30%; overflow: hidden;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59370.5109799162!2d30.217758202578!3d59.93498150875427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469631bad87b9ffd%3A0x1b7fe18a24bfecc7!2z0JDRgNC10L3QtNCwINCw0LLRgtC-INCc0L7RgdC60L7QstGB0LrQuNC5INCy0L7QutC30LDQuw!5e0!3m2!1sru!2sby!4v1742066516407!5m2!1sru!2sby"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+</footer>
+   
+    <script src="script.js"></script>
+</body>
+</html>
