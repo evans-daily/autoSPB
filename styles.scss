@@ -1,0 +1,754 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Gill Sans", sans-serif;
+    }
+    
+    body {
+    line-height: 1.6;
+    background-image: url("img/fon2.jpg");
+    }
+    
+    h1 {
+        color: #f4f4f4
+    }
+    
+    p8 {
+        color: #f4f4f4;
+    }
+    
+    img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 180px;
+    
+    }
+    
+    .image-body {
+    width: 200px;
+    }
+    
+    header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    padding: 20px;
+    background-color: #4df7da;
+    color: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4df7da), to(rgba(80, 255, 252, 0)));
+    background: -o-linear-gradient(top, #4df7da, rgba(80, 255, 252, 0));
+    background: linear-gradient(to bottom, #4df7da, rgba(80, 255, 252, 0));
+    }
+    
+    
+    
+    .openModalBtn {
+        width: 100%; /* Кнопка на всю ширину карточки */
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #007bff; /* Цвет фона */
+        color: white; /* Цвет текста */
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .openModalBtn:hover {
+        background-color: #0056b3; /* Цвет фона при наведении */
+    }
+    
+    .openModalBtn:active {
+        background-color: #004085; /* Цвет фона при нажатии */
+    }
+    
+    
+    html {
+    scroll-behavior: smooth;
+    }
+    
+    header .logo {
+    font-size: 24px;
+    }
+    
+    header .phone {
+    font-size: 18px;
+    }
+    
+    section {
+    padding: 20px;
+    margin: 20px 0;
+    }
+    
+    .image-text-block {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    }
+    
+    .image img {
+    width: 300px;
+    height: auto;
+    }
+    
+    
+    .notes {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 10px; /* Расстояние между заметками */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .note {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    -webkit-transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+    transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+    -o-transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 0.9rem;
+    }
+    
+    .note:hover {
+    -webkit-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+            transform: translateY(-5px);
+    -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* product-card */
+    
+    /* Модальное окно */
+    .modal {
+    display: none;  /* Скрываем окно по умолчанию */
+    position: fixed;
+    z-index: 1;  /* Ставим окно поверх всего */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Скрываем прокрутку */
+    background-color: rgba(0, 0, 0, 0.4);  /* Полупрозрачный фон */
+    }
+    
+    /* Содержимое модального окна */
+    .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;  /* Размер модального окна */
+    max-width: 600px;
+    text-align: center;
+    }
+    
+    /* Кнопка закрытия */
+    .close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    }
+    
+    .close-btn:hover,
+    .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    
+    
+    .product-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 20px;
+    }
+    
+    .product-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    } 
+    
+    footer {
+    background-color: #343a40;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    text-align: center;
+    background: -webkit-gradient(linear, left bottom, left top, from(#4df7da), to(rgba(80, 255, 252, 0)));
+    background: -o-linear-gradient(bottom, #4df7da, rgba(80, 255, 252, 0));
+    background: linear-gradient(to top, #4df7da, rgba(80, 255, 252, 0));
+    }
+    
+    .footer-content h2 {
+    margin: 0;
+    }
+    
+    .contact-links {
+    list-style-type: none;
+    padding: 0;
+    }
+    
+    .contact-links li {
+    margin: 5px 0;
+    }
+    
+    .contact-links a {
+    color: #a1f4e6 ;
+    text-decoration: none;
+    }
+    
+    .contact-links a:hover {
+    text-decoration: underline;
+    color: rgba(0, 123, 255, 0.8); /* Цвет при наведении */
+    }
+    
+    
+    h5 {
+    color: #a1f4e6;
+    
+    }
+    
+    
+    .tn-atom {
+    max-width: 100%; /* Ограничиваем ширину блока */
+    }
+    
+    .tn-atom iframe {
+    width: 100%; /* Ширина iframe подстраивается под родительский элемент */
+    height: 100%;
+    }
+    
+    
+    /* Эффект наведения на якорь */
+    /* .back-to-top:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    } */
+    
+    #back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    }
+    
+    #back-to-top:hover {
+    background-color: #0056b3;
+    }
+    
+    
+    /* steps */
+    .rental-steps-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin-top: 50px;
+    color: white;
+    }
+    
+    .step {
+    position: relative;
+    padding: 20px;
+    cursor: pointer;
+    }
+    
+    .step p {
+    font-size: 16px;
+    font-weight: bold;
+    }
+    
+    .tooltip {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: opacity 0.3s ease, left 0.3s ease;
+    -o-transition: opacity 0.3s ease, left 0.3s ease;
+    transition: opacity 0.3s ease, left 0.3s ease;
+    }
+    
+    
+    .step:hover .tooltip {
+    -webkit-animation: slideIn 0.5s forwards;
+            animation: slideIn 0.5s forwards;
+    }
+    
+    @-webkit-keyframes moveFromLeft {
+    0% {
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+    }
+    
+    @keyframes moveFromLeft {
+    0% {
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+    }
+    
+    @-webkit-keyframes moveFromRight {
+    0% {
+      -webkit-transform: translateX(100%);
+              transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+    }
+    
+    @keyframes moveFromRight {
+    0% {
+      -webkit-transform: translateX(100%);
+              transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+    }
+    
+    
+    
+    /* rewiew */
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    }
+    
+    .reviews-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 50px;
+    }
+    
+    .reviews-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #333;
+    }
+    
+    .reviews-list {
+    max-width: 600px;
+    }
+    
+    .review-item {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .review-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+    }
+    
+    .review-author {
+    font-size: 14px;
+    color: #777;
+    font-style: italic;
+    }
+    
+    .reviews-list .review-item:hover {
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .google-reviews {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #eadede;
+    }
+    
+    .google-reviews a {
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: bold;
+    }
+    
+    .google-reviews a:hover {
+    text-decoration: underline;
+    }
+      
+      
+      
+      
+      
+      /* Адаптивные стили для iPhone 11 (и других мобильных устройств) */
+      @media (max-width: 828px) { /* Ширина экрана iPhone 11 */
+        .image-text-block {
+          flex-direction: column;
+          align-items: center;
+          padding: 15px;
+        }
+      
+        .image-body {
+          max-width: 100%;
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+      
+        .text {
+          max-width: 100%;
+          text-align: center;
+        }
+      
+        .text p {
+          font-size: 1rem;  /* Уменьшаем шрифт для мобильных */
+        }
+      
+        .text p1 {
+          font-size: 0.9rem;  /* Уменьшаем шрифт для мобильных */
+        }
+      
+        .notes {
+          margin-top: 10px;
+          width: 100%;
+        }
+      
+        .note {
+          font-size: 0.8rem;  /* Уменьшаем размер шрифта в заметках */
+          padding: 8px;
+        }
+      }
+      
+      /* Дополнительные стили для экрана маленьких мобильных устройств */
+      @media (max-width: 375px) { /* Очень маленькие экраны (например, для iPhone SE) */
+        .text p {
+          font-size: 0.9rem;  /* Еще меньше для небольших экранов */
+        }
+      
+        .text p1 {
+          font-size: 0.8rem;  /* Еще меньше для небольших экранов */
+        }
+      
+        .note {
+          font-size: 0.75rem;
+          padding: 6px;
+        }
+      }
+      
+      /* Модальное окно */
+      .modal {
+        display: none; /* Скрываем окно по умолчанию */
+        position: fixed;
+        z-index: 1; /* Ставим окно поверх всего */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный фон */
+        overflow: auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      
+      /* Содержимое модального окна */
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Размер модального окна */
+        max-width: 600px;
+        text-align: center;
+        box-sizing: border-box;
+        border-radius: 8px;
+      }
+      
+      /* Кнопка закрытия */
+      .close-btn {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        cursor: pointer;
+      }
+      
+      .close-btn:hover,
+      .close-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      
+      /* Адаптивные стили для модального окна на мобильных устройствах */
+      @media (max-width: 828px) { /* Для iPhone 11 */
+        .modal-content {
+          width: 90%; /* Сделаем окно чуть уже */
+          padding: 15px;
+        }
+      
+        .close-btn {
+          font-size: 24px; /* Уменьшаем размер кнопки на мобильных */
+          top: 5px;
+          right: 10px;
+        }
+      
+        .modal-content h2 {
+          font-size: 1.2rem; /* Уменьшаем размер заголовка */
+        }
+      
+        .modal-content p {
+          font-size: 1rem; /* Уменьшаем размер текста */
+        }
+      }
+      
+      /* Очень маленькие экраны (например, iPhone SE) */
+      @media (max-width: 375px) {
+        .modal-content {
+          width: 95%; /* Еще уменьшить размер окна на очень маленьких экранах */
+          padding: 10px;
+        }
+      
+        .modal-content h2 {
+          font-size: 1rem; /* Еще меньше заголовок */
+        }
+      
+        .modal-content p {
+          font-size: 0.9rem; /* Меньше шрифт в тексте */
+        }
+      
+        .close-btn {
+          font-size: 22px; /* Уменьшаем кнопку на маленьких экранах */
+        }
+      }
+      
+    
+    
+    
+    
+    
+      /* Общие стили для всех блоков */
+    .rental-steps-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+      }
+      
+      .step {
+        position: relative;
+        text-align: center;
+        margin-bottom: 30px;
+        width: 80%;
+      }
+      
+      .step p {
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 10px 0;
+      }
+      
+      .tooltip {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        max-width: 200px;
+        text-align: center;
+      }
+      
+      .step:hover .tooltip {
+        display: block;
+      }
+      
+      /* Стили для каждого шага */
+      #step1 {
+        background-color: #3b3a5d;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      #step2 {
+        background-color: #3b3a5d;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      #step3 {
+        background-color: #3b3a5d;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      #step4 {
+        background-color: #3b3a5d;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* Стили для заголовка */
+      h2#section-1 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+      
+      /* Медиазапрос для экранов с шириной до 828px (iPhone 11) */
+      @media (max-width: 828px) {
+        .rental-steps-container {
+          margin: 10px;
+        }
+      
+        .step {
+          width: 90%; /* Уменьшаем ширину блока для меньших экранов */
+          margin-bottom: 20px;
+        }
+      
+        .step p {
+          font-size: 16px; /* Уменьшаем размер шрифта для мобильных устройств */
+        }
+      
+        /* Уменьшаем размеры подсказок */
+        .tooltip {
+          font-size: 12px;
+          max-width: 160px;
+        }
+      
+        h2#section-1 {
+          font-size: 20px; /* Уменьшаем размер заголовка */
+          margin-bottom: 15px;
+        }
+      }
+      
+      /* Медиазапрос для экранов до 375px (iPhone SE и другие маленькие экраны) */
+      @media (max-width: 375px) {
+        .rental-steps-container {
+          margin: 5px;
+        }
+      
+        .step {
+          width: 95%;
+          margin-bottom: 15px;
+        }
+      
+        .step p {
+          font-size: 14px; /* Еще уменьшаем размер шрифта для маленьких экранов */
+        }
+      
+        .tooltip {
+          font-size: 10px;
+          max-width: 140px;
+        }
+      
+        h2#section-1 {
+          font-size: 18px; /* Еще уменьшаем размер заголовка для маленьких экранов */
+        }
+      }
+      
