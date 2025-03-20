@@ -3,7 +3,10 @@
     "npm": "^11.2.0"
   },
   "scripts": {
-    "start": "avtoSPB"
+    "start": "avtoSPB",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   }
 }
 
